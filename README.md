@@ -4,6 +4,10 @@ Drop-in `Serial` replacement for ESP32 that sends output to a Telegram bot over 
 
 Inherits from `Print` — works anywhere `Serial` does. Just swap `Serial` for `tg`.
 
+> **Each user creates their own free Telegram bot** via [@BotFather](https://t.me/BotFather).
+> Your serial output goes directly from your device to your chat — no relay server,
+> no third party, no shared infrastructure. Fully segmented and private by design.
+
 ## Features
 
 - **Drop-in** — inherits `Print`, so `print()`, `println()`, `printf()` all work
