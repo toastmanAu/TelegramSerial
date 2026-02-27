@@ -23,7 +23,7 @@
  *   #define CKB_TEST_OUTPUT tg   // redirect all bench output to Telegram
  *
  * Author:  toastmanAu (Phill)
- * Repo:    https://github.com/toastmanAu/CKB-ESP32
+ * Repo:    https://github.com/toastmanAu/TelegramSerial
  * License: MIT
  */
 
