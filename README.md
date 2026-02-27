@@ -47,11 +47,54 @@ void loop() {
 }
 ```
 
-## Getting a Bot Token and Chat ID
+## Setup: Creating Your Bot
 
-1. Message [@BotFather](https://t.me/BotFather) → `/newbot` → copy the token
-2. For a group: add your bot, then message [@userinfobot](https://t.me/userinfobot) from the group — copy the chat ID (negative number)
-3. For a personal chat: start a DM with your bot, then visit `https://api.telegram.org/bot<TOKEN>/getUpdates` to find your user ID
+You need two things: a **bot token** and a **chat ID**. Takes about 2 minutes.
+
+### Step 1 — Create a bot (get the token)
+
+1. Open Telegram and search for **@BotFather** (official, blue tick)
+2. Send `/newbot`
+3. Choose a display name (e.g. `My ESP32 Bot`)
+4. Choose a username — must end in `bot` (e.g. `myesp32_bot`)
+5. BotFather replies with your token — looks like `123456789:ABC-xyz...`
+
+Copy that token. It goes in `BOT_TOKEN` in your sketch.
+
+### Step 2 — Get your chat ID
+
+**Option A — Personal DM (simplest):**
+1. Search for your bot by username and press **Start**
+2. Visit this URL in a browser (replace `YOUR_TOKEN`):
+   ```
+   https://api.telegram.org/botYOUR_TOKEN/getUpdates
+   ```
+3. Send any message to your bot, refresh the URL
+4. Find `"chat":{"id":123456789}` — that number is your chat ID
+
+**Option B — Group chat:**
+1. Create a group (or use an existing one)
+2. Add your bot to the group
+3. Send any message in the group
+4. Visit the `getUpdates` URL above — the chat ID will be a **negative** number (e.g. `-1001234567890`)
+
+**Option C — Use @userinfobot:**
+1. Add [@userinfobot](https://t.me/userinfobot) to your group
+2. It will reply with the group's chat ID
+3. Remove it when done
+
+### Step 3 — Use in your sketch
+
+```cpp
+#define BOT_TOKEN  "123456789:ABC-YourTokenHere"
+#define CHAT_ID    "123456789"        // personal DM — positive number
+// or
+#define CHAT_ID    "-1001234567890"   // group chat — negative number
+
+TelegramSerial tg(WIFI_SSID, WIFI_PASS, BOT_TOKEN, CHAT_ID);
+```
+
+> **Note:** Your bot must have received at least one message before `getUpdates` will return anything. If the list is empty, send your bot a message first then refresh.
 
 ## Constructor
 
