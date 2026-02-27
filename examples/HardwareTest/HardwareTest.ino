@@ -20,7 +20,7 @@
 #define WIFI_SSID   "YourNetwork"
 #define WIFI_PASS   "YourPassword"
 #define BOT_TOKEN   "123456789:ABC-YourBotTokenHere"
-#define CHAT_ID     "1790655432"
+#define CHAT_ID     "YOUR_CHAT_ID"
 // ─────────────────────────────────────────────────────────────────────────────
 
 // Mirror everything to USB Serial so we can watch locally too
